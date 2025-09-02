@@ -487,22 +487,27 @@
   <!-- Service Cards (Service Providers only) -->
   <div id="serviceCards" class="service-only hidden">
     <p class="text-red-700 mb-2 font-medium">Select Your Services (Max 1)</p>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-8">
-      <button type="button" class="service-card" data-service="plumbing">Plumbing</button>
-      <button type="button" class="service-card" data-service="fashion">Fashion Designing</button>
-      <button type="button" class="service-card" data-service="electrical">Electrical Works</button>
-      <button type="button" class="service-card" data-service="painting">Painting</button>
-      <button type="button" class="service-card" data-service="web">Web Development</button>
-      <button type="button" class="service-card" data-service="carpentry">Carpentry</button>
-      <button type="button" class="service-card" data-service="delivery">Delivery</button>
-      <button type="button" class="service-card" data-service="laundry">Laundry</button>
-      <button type="button" class="service-card" data-service="hair">Hair Stylist</button>
-      <button type="button" class="service-card" data-service="pedicure_manicure">Pedicure & Manicure</button>
-      <button type="button" class="service-card" data-service="phone_repair">Phone Repair</button>
-      <button type="button" class="service-card" data-service="wall_design">Wall Design</button>
-      <button type="button" class="service-card" data-service="house_cleanup">House Cleanup</button>
-      <button type="button" class="service-card" data-service="photography">Photography</button>
-    </div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-8">
+  <button type="button" class="service-card" data-service="catering">Catering</button>
+  <button type="button" class="service-card" data-service="carpentry">Carpentry</button>
+  <button type="button" class="service-card" data-service="cleaning">Cleaning Services</button>
+  <button type="button" class="service-card" data-service="delivery">Delivery</button>
+  <button type="button" class="service-card" data-service="electrical">Electrical Works</button>
+  <button type="button" class="service-card" data-service="fashion">Fashion Designing</button>
+  <button type="button" class="service-card" data-service="frame">Picture Frame</button>
+  <button type="button" class="service-card" data-service="graphics">Graphics Design</button>
+  <button type="button" class="service-card" data-service="hair">Hair Stylist</button>
+  <button type="button" class="service-card" data-service="house_cleanup">House Cleanup</button>
+  <button type="button" class="service-card" data-service="laundry">Laundry</button>
+  <button type="button" class="service-card" data-service="painting">Painting</button>
+  <button type="button" class="service-card" data-service="pedicure_manicure">Pedicure & Manicure</button>
+  <button type="button" class="service-card" data-service="phone_repair">Phone Repair</button>
+  <button type="button" class="service-card" data-service="photography">Photography</button>
+  <button type="button" class="service-card" data-service="plumbing">Plumbing</button>
+  <button type="button" class="service-card" data-service="web">Web Development</button>
+  <button type="button" class="service-card" data-service="wall_design">Wall Design</button>
+</div>
+
     <input type="hidden" name="selectedServices" id="selectedServices">
   </div>
 
@@ -592,7 +597,7 @@
     <div class="text-center space-y-4">
       <h2 class="text-2xl sm:text-3xl font-bold text-[#008000]">Join Our Waitlist and Stay Updated!</h2>
       <p class="text-slate-700 text-sm sm:text-base">Be among the first to access Zik-BI's platform.</p>
-      <a href="https://zikbuy-waiting-list.vercel.app/" 
+      <a href="#/" 
          class="inline-block mt-4 px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-[#008000] to-emerald-700 text-white rounded-xl shadow-lg hover:scale-105 transition-transform text-sm sm:text-base">
         Join Pre-launch Waitlist
       </a>
@@ -779,29 +784,26 @@
 </style>
 
 
-    <!-- Supported Platforms -->
-    <div class="flex flex-wrap justify-center gap-6 text-slate-800 text-sm">
-      <div class="flex items-center gap-2">
-        <img src="windows.svg" class="w-6 h-6" alt="Windows"/>
-        Windows
-      </div>
-      <div class="flex items-center gap-2">
-        <img src="firefox.svg" class="w-6 h-6" alt="Firefox"/>
-        Firefox
-      </div>
-      <div class="flex items-center gap-2">
-        <img src="chrome.svg" class="w-6 h-6" alt="Chrome"/>
-        Chrome
-      </div>
-      <div class="flex items-center gap-2">
-        <img src="macos.svg" class="w-6 h-6" alt="macOS"/>
-        macOS
-      </div>
-      <div class="flex items-center gap-2">
-        <img src="linux.svg" class="w-6 h-6" alt="Linux"/>
-        Linux
-      </div>
-    </div>
+   <!-- Using Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<div class="flex flex-wrap justify-center gap-6 text-slate-800 text-sm">
+  <div class="flex items-center gap-2">
+    <i class="fab fa-windows text-xl"></i> Windows
+  </div>
+  <div class="flex items-center gap-2">
+    <i class="fab fa-firefox-browser text-xl"></i> Firefox
+  </div>
+  <div class="flex items-center gap-2">
+    <i class="fab fa-chrome text-xl"></i> Chrome
+  </div>
+  <div class="flex items-center gap-2">
+    <i class="fab fa-apple text-xl"></i> macOS
+  </div>
+  <div class="flex items-center gap-2">
+    <i class="fab fa-linux text-xl"></i> Linux
+  </div>
+</div>
 
     <!-- Contact & Newsletter -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
@@ -809,7 +811,7 @@
       <!-- Contact Info -->
       <div class="space-y-2">
         <h3 class="font-semibold text-lg text-slate-900">Contact Us</h3>
-        <p class="text-slate-700">Phone: <a href="tel:09079932678" class="text-[#008000]">07072927387</a></p>
+        <p class="text-slate-700">Phone: <a href="tel:07072927387" class="text-[#008000]">+234-707-292-7387</a></p>
         <p class="text-slate-700">Email: <a href="mailto:bi.market10@gmail.com" class="text-[#008000]">bi.market10@gmail.com</a></p>
       </div>
 
@@ -875,7 +877,7 @@
         <span class="text-[#008000]">+</span>
       </button>
       <div class="hidden px-4 pb-4 text-gray-600">
-        You can reach out to our support team via email at <a href="mailto:support@zikbuy.com" class="text-[#008000] underline">bi.market10@gmail.com</a>.  
+        You can reach out to our support team via email at <a href="mailto:bi.market10@gmail.com" class="text-[#008000] underline">bi.market10@gmail.com</a>.  
         Live chat and phone support will also be available when we launch.
       </div>
     </div>
@@ -947,7 +949,7 @@ function toggleFAQ(button) {
       class="px-4 py-2 text-sm sm:text-base rounded-xl bg-gradient-to-r from-[#008000] to-[#006600] text-white shadow hover:scale-105 transition-all">
       Help
     </a>
-    <a href="https://zikbuy-waiting-list.vercel.app/" 
+    <a href="#" 
        class="px-6 py-3 bg-gradient-to-r from-[#008000] to-emerald-700 text-white rounded-xl shadow-lg hover:scale-105 transition-transform text-sm sm:text-base">
         Waitlist
     </a>
@@ -964,7 +966,7 @@ function toggleFAQ(button) {
   <!-- Mobile Dropdown Menu -->
   <div id="mobileMenu" class="hidden absolute top-full right-4 mt-2 w-40 bg-white shadow-lg rounded-xl border border-gray-200 overflow-hidden md:hidden">
     <a href="#help" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50">Help</a>
-    <a href="https://zikbuy-waiting-list.vercel.app/" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50">Waitlist</a>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-emerald-50">Waitlist</a>
   </div>
 </header>
 
@@ -1205,30 +1207,49 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ===============================
      FORM SUBMIT (Google Script)
   ================================ */
-  function initFormSubmit() {
-    const form = document.getElementById('vendorForm');
-    if (!form) return;
+function initFormSubmit() {
+  const form = document.getElementById('vendorForm');
+  if (!form) return;
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwdyxSD7XX42JG-XNp0H_bj8JENqpgXXk6xNe0WKzrjqE_p8HjX3PhFtw-6Jx4I5WK7oA/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwdyxSD7XX42JG-XNp0H_bj8JENqpgXXk6xNe0WKzrjqE_p8HjX3PhFtw-6Jx4I5WK7oA/exec";
+  const submitBtn = form.querySelector('[type="submit"]');
+  let submitting = false;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      formData.append("selectedServices", document.getElementById('selectedServices')?.value || "");
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (submitting) return; // prevent double submissions
+    submitting = true;
 
-      fetch(scriptURL, { method: "POST", body: formData })
-        .then(res => {
-          if (res.ok) {
-            swal("Success", "Form submitted successfully!", "success");
-            form.reset();
-            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
-          } else {
-            swal("Error", "Submission failed. Try again.", "error");
-          }
-        })
-        .catch(() => swal("Error", "Network error. Please try again.", "error"));
-    });
-  }
+    // Disable button and show feedback
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting…";
+    }
+
+    const formData = new FormData(form);
+    formData.append("selectedServices", document.getElementById('selectedServices')?.value || "");
+
+    fetch(scriptURL, { method: "POST", body: formData })
+      .then(res => {
+        if (res.ok) {
+          swal("Success", "Form submitted successfully!", "success");
+          form.reset();
+          document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+        } else {
+          swal("Error", "Submission failed. Try again.", "error");
+        }
+      })
+      .catch(() => swal("Error", "Network error. Please try again.", "error"))
+      .finally(() => {
+        submitting = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit";
+        }
+      });
+  });
+}
+
 
   /* ===============================
      CAROUSEL
