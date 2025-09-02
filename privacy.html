@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Zik Buy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* Base */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+  body { background: #F7FAFC; color: #1F2937; line-height: 1.7; padding-top: 100px; }
+
+  /* Header */
+  header {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 90px;
+    display: flex; align-items: center;
+    padding: 0 2rem;
+    background: ;
+    border-bottom: 1px solid #E5E7EB;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    z-index: 1000;
+  }
+  header .logo-text { display: flex; align-items: center; gap: 1rem; }
+  header img { width: 60px; height: 60px; }
+  header h1 { font-weight: 700; font-size: 1.3rem; color: #008000; }
+  header h1 span { font-weight: 500; font-size: 1rem; color: #4B5563; margin-left: 0.5rem; }
+
+  /* Container */
+  main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 3rem 2.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  }
+
+  /* Typography */
+  h1 { font-family: 'Roboto Slab', serif; font-size: 2.2rem; color: #008000; margin-bottom: 1.5rem; text-align: center; }
+  h2 { font-size: 1.5rem; color: #065F46; margin-top: 2rem; margin-bottom: 0.8rem; font-weight: 600; }
+  p, li { font-size: 1rem; color: #374151; margin-bottom: 0.8rem; }
+  ul { margin-left: 1.5rem; margin-bottom: 1rem; list-style-type: disc; }
+
+  /* Back button */
+  a.back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.6rem 1.2rem;
+    background: #008000;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  a.back-button:hover { background: #065F46; transform: translateY(-2px); }
+
+  /* Scroll reveal */
+  .section-hidden { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+  .section-visible { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
+  @media(max-width:768px){
+    main { padding: 2rem 1.5rem; margin: 1rem; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.3rem; }
+    header h1 { font-size: 1.3rem; }
+    header h1 span { font-size: 0.9rem; }
+  }
+  @media(max-width:480px){
+    main { padding: 1.5rem 1rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.1rem; }
+    header h1 { font-size: 1.1rem; }
+    header h1 span { font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-text">
+    <img src="logo.png" alt="Zik-BI Logo">
+    <h1>Zik-BI <br> <span>Vendor Onboarding</span></h1>
+  </div>
+</header>
+
+<main class="section-hidden">
+  <h1>Privacy Policy</h1>
+  <p>Your privacy is important to us. Zik Buy collects only the necessary information to provide our services and ensure a secure, seamless experience.</p>
+
+  <h2>Information We Collect</h2>
+  <ul>
+    <li>Basic account details: name, email, contact number.</li>
+    <li>Transaction history and order details.</li>
+    <li>Optional profile information such as business details.</li>
+  </ul>
+
+  <h2>How We Use Information</h2>
+  <p>Collected data is used to improve user experience, process transactions efficiently, and comply with legal obligations.</p>
+
+  <h2>Your Rights</h2>
+  <p>You can request access, correction, or deletion of your personal data at any time by contacting <a href="mailto:bi.market10@gmail.com">bi.market10@gmail.com</a>.</p>
+
+  <a href="index.html" class="back-button">← Back to Home</a>
+</main>
+
+<script>
+  // Scroll reveal
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.querySelector(".section-hidden");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("section-visible");
+        }
+      });
+    }, { threshold: 0.2 });
+    if(el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
