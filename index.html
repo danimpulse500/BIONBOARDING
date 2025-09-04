@@ -272,6 +272,10 @@
   position: relative;
   overflow: hidden;
 }
+.service-card.selected {
+  background-color: #008000;
+  color: #fff;
+}
 
 /* Hover interaction */
 .service-card:hover {
@@ -355,9 +359,9 @@
     <!-- Slide 1 -->
     <div class="carousel-slide flex-shrink-0 w-full flex flex-col items-center justify-center text-center px-4 sm:px-8 py-6">
       <div class="text-[#008000] mb-4 sm:mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 sm:w-16 sm:h-16 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-14 sm:h-14 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l7 4v6c0 5.25-3.5 9.74-7 10-3.5-.26-7-4.75-7-10V6l7-4z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l7 4v6c0 5.25-2.5 9.74-7 10-2.5-.26-7-4.75-7-10V6l7-4z" />
         </svg>
       </div>
       <h3 class="text-2xl sm:text-4xl font-bold mb-3 sm:mb-4 text-slate-900">Trusted Profiles</h3>
@@ -367,7 +371,7 @@
     <!-- Slide 2 -->
     <div class="carousel-slide flex-shrink-0 w-full flex flex-col items-center justify-center text-center px-4 sm:px-8 py-6">
       <div class="text-[#008000] mb-4 sm:mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 sm:w-16 sm:h-16 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-14 sm:h-14 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M15 7a4 4 0 11-8 0 4 4 0 018 0zm6 7a4 4 0 10-8 0 4 4 0 008 0z" />
         </svg>
       </div>
@@ -378,7 +382,7 @@
     <!-- Slide 3 -->
     <div class="carousel-slide flex-shrink-0 w-full flex flex-col items-center justify-center text-center px-4 sm:px-8 py-6">
       <div class="text-[#008000] mb-4 sm:mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 sm:w-16 sm:h-16 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-14 sm:h-14 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 7V6a2 2 0 012-2h8a2 2 0 012 2v1M6 7h12M6 7v10a2 2 0 002 2h8a2 2 0 002-2V7" />
         </svg>
       </div>
@@ -389,7 +393,7 @@
     <!-- Slide 4 -->
     <div class="carousel-slide flex-shrink-0 w-full flex flex-col items-center justify-center text-center px-4 sm:px-8 py-6">
       <div class="text-[#008000] mb-4 sm:mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 sm:w-16 sm:h-16 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 sm:w-14 sm:h-14 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <rect x="2" y="5" width="20" height="14" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path stroke-linecap="round" stroke-linejoin="round" d="M2 10h20" />
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 16h2v2H6z" />
@@ -444,6 +448,10 @@
 
     <!-- Registration Form -->
 <form id="vendorForm" class="space-y-5">
+   <!-- Hidden role input -->
+   <input type="hidden" name="role" id="role" value="vendor">
+  <input type="hidden" name="selectedServices" id="selectedServices" value="">
+
   <!-- Vendor Fields -->
   <div class="vendor-only">
     <!-- Business Name -->
@@ -478,7 +486,7 @@
   </div>
 
   <div class="form-input relative">
-    <input type="tel" id="phonen" name="phoneNumber" placeholder=" " class="peer w-full border-b-2 border-gray-300 focus:border-emerald-600 outline-none py-2" required>
+    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder=" " class="peer w-full border-b-2 border-gray-300 focus:border-emerald-600 outline-none py-2" required>
     <label for="phoneNumber" class="absolute left-0 top-2 text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm peer-focus:text-emerald-600">
       Phone Number
     </label>
@@ -616,135 +624,137 @@
       <!-- ROW A -->
       <div class="flex gap-4 sm:gap-6 shrink-0">
         <!-- Service Card -->
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 
-                    bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md 
-                    flex flex-col items-center text-center hover:scale-105 
-                    transition-transform min-w-[150px] sm:min-w-[180px]">
+<div class="relative p-2 sm:p-3 rounded-2xl border border-emerald-200 
+            bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md 
+            flex flex-col items-center justify-center text-center 
+            hover:scale-105 transition-transform min-w-[90px] sm:min-w-[150px]">
+
+
           <!-- Tick Badge -->
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Plumbing</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Plumbing</h4>
         </div>
 
         <!-- Repeat cards -->
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Fashion Designing</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Fashion Designing</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Electrical Works</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Electrical Works</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Painting</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Painting</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Web Development</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Web Development</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Carpentry</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Carpentry</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Delivery</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Delivery</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Laundry</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Laundry</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Hair Stylist</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Hair Stylist</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Pedicure &amp; Manicure</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Pedicure &amp; Manicure</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Phone &amp; Gadget Repair</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Phone &amp; Gadget Repair</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Wall Design</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Wall Design</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">House Cleanup</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">House Cleanup</h4>
         </div>
 
-        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[150px] sm:min-w-[180px]">
+        <div class="relative p-4 sm:p-6 rounded-2xl border border-emerald-200 bg-gradient-to-b from-emerald-50 to-emerald-100 shadow-md flex flex-col items-center text-center hover:scale-105 transition-transform min-w-[120px] sm:min-w-[180px]">
           <span class="tick-badge pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
             </svg>
           </span>
-          <h4 class="font-semibold text-sm sm:text-lg text-[#008000] mb-1">Photography</h4>
+          <h4 class="font-semibold text-xs sm:text-lg text-[#008000] mb-1">Photography</h4>
         </div>
       </div>
 
@@ -768,19 +778,20 @@
     animation: scroll 30s linear infinite;
   }
   /* Always-identical badge position & perfect centering */
-  .tick-badge {
-    position: absolute;
-    top: 0.5rem;   /* ~8px */
-    right: 0.5rem; /* ~8px */
-    width: 1.5rem; /* 24px */
-    height: 1.5rem;
-    display: grid;
-    place-items: center;
-    border-radius: 9999px;
-    border: 2px solid #000; /* matches your original */
-    background: transparent;
-    line-height: 0; /* avoids vertical centering quirks */
-  }
+.tick-badge {
+  position: absolute;
+  top: 0.5rem;   /* stays the same */
+  right: 0.5rem;
+  width: 1rem;   /* 16px instead of 24px */
+  height: 1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  border: 2px solid #000;
+  background: transparent;
+  line-height: 0;
+}
+
 </style>
 
 
@@ -1047,7 +1058,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (activeStep) activeStep.classList.add('active');
     }
 
-    // Step clicks
     stepElems.forEach(step => {
       step.addEventListener('click', () => {
         const target = document.getElementById(step.dataset.target);
@@ -1056,7 +1066,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Highlight based on scroll
     function highlightStepper() {
       let scrollPos = window.scrollY + window.innerHeight / 3;
       sections.forEach(sec => {
@@ -1070,68 +1079,82 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('scroll', highlightStepper);
     highlightStepper();
   }
+/* ===============================
+   ROLE TOGGLE (Vendor / Service)
+=============================== */
+function initRoleToggle() {
+  const roleButtons = document.querySelectorAll('.role-btn');
+  const formTitle = document.getElementById('formTitle');
+  const vendorFields = document.querySelectorAll('.vendor-only');
+  const serviceCardsContainer = document.getElementById('serviceCards');
+  const serviceCards = document.querySelectorAll('.service-card');
+  const selectedServicesInput = document.getElementById('selectedServices');
+  const roleInput = document.getElementById("role");
+  let selectedServices = [];
 
-  /* ===============================
-     ROLE TOGGLE (Vendor / Service)
-  ================================ */
-  function initRoleToggle() {
-    const roleButtons = document.querySelectorAll('.role-btn');
-    const formTitle = document.getElementById('formTitle');
-    const vendorFields = document.querySelectorAll('.vendor-only');
-    const serviceCardsContainer = document.getElementById('serviceCards');
-    const serviceCards = document.querySelectorAll('.service-card');
-    const selectedServicesInput = document.getElementById('selectedServices');
-    let selectedServices = [];
+  roleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const role = btn.dataset.role;
+      if (roleInput) roleInput.value = role;
 
-    roleButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const role = btn.dataset.role;
+      // button styling
+      roleButtons.forEach(b => {
+        if (b === btn) {
+          b.classList.add('bg-[#008000]', 'text-white');
+          b.classList.remove('border', 'border-[#008000]', 'text-[#008000]');
+        } else {
+          b.classList.remove('bg-[#008000]', 'text-white');
+          b.classList.add('border', 'border-[#008000]', 'text-[#008000]');
+        }
+      });
 
-        roleButtons.forEach(b => {
-          if (b === btn) {
-            b.classList.add('bg-[#008000]', 'text-white');
-            b.classList.remove('border', 'border-[#008000]', 'text-[#008000]');
-          } else {
-            b.classList.remove('bg-[#008000]', 'text-white');
-            b.classList.add('border', 'border-[#008000]', 'text-[#008000]');
-          }
+      if (role === 'vendor') {
+        formTitle.textContent = "Vendor Registration";
+
+        // show vendor fields + make required
+        vendorFields.forEach(f => {
+          f.style.display = 'block';
+          f.querySelectorAll("input").forEach(inp => inp.required = true);
         });
 
-        if (role === 'vendor') {
-          formTitle.textContent = "Vendor Registration";
-          vendorFields.forEach(f => f.style.display = 'block');
-          serviceCardsContainer.style.display = 'none';
-          selectedServices = [];
-          serviceCards.forEach(card => card.classList.remove('selected'));
-          selectedServicesInput.value = '';
-        } else {
-          formTitle.textContent = "Service Provider Registration";
-          vendorFields.forEach(f => f.style.display = 'none');
-          serviceCardsContainer.style.display = 'block';
-        }
-      });
-    });
+        // hide service fields
+        serviceCardsContainer.style.display = 'none';
+        selectedServices = [];
+        serviceCards.forEach(card => card.classList.remove('selected'));
+        selectedServicesInput.value = '';
 
-    // Service card selection (max 1)
-    serviceCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const service = card.dataset.service;
-        if (selectedServices.includes(service)) {
-          selectedServices = selectedServices.filter(s => s !== service);
-          card.classList.remove('selected');
-        } else {
-          if (selectedServices.length >= 1) return; // limit 1
-          selectedServices.push(service);
-          card.classList.add('selected');
-        }
-        selectedServicesInput.value = selectedServices.join(',');
-      });
-    });
+      } else {
+        formTitle.textContent = "Service Provider Registration";
 
-    // Default role = vendor
-    vendorFields.forEach(f => f.style.display = 'block');
-    serviceCardsContainer.style.display = 'none';
-  }
+        // hide vendor fields + remove required
+        vendorFields.forEach(f => {
+          f.style.display = 'none';
+          f.querySelectorAll("input").forEach(inp => inp.required = false);
+        });
+
+        // show service cards
+        serviceCardsContainer.style.display = 'block';
+      }
+    });
+  });
+
+  // service card selection (max 1)
+  serviceCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const service = card.dataset.service;
+      serviceCards.forEach(c => c.classList.remove("selected"));
+      selectedServices = [service];
+      card.classList.add("selected");
+      selectedServicesInput.value = selectedServices.join(',');
+    });
+  });
+
+  // default: vendor view
+  vendorFields.forEach(f => f.style.display = 'block');
+  serviceCardsContainer.style.display = 'none';
+}
+
+
 
   /* ===============================
      DROPDOWN
@@ -1207,48 +1230,53 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ===============================
      FORM SUBMIT (Google Script)
   ================================ */
-function initFormSubmit() {
-  const form = document.getElementById('vendorForm');
-  if (!form) return;
+  function initFormSubmit() {
+    const form = document.getElementById('vendorForm');
+    if (!form) return;
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwdyxSD7XX42JG-XNp0H_bj8JENqpgXXk6xNe0WKzrjqE_p8HjX3PhFtw-6Jx4I5WK7oA/exec";
-  const submitBtn = form.querySelector('[type="submit"]');
-  let submitting = false;
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwdyxSD7XX42JG-XNp0H_bj8JENqpgXXk6xNe0WKzrjqE_p8HjX3PhFtw-6Jx4I5WK7oA/exec";
+    const submitBtn = form.querySelector('[type="submit"]');
+    let submitting = false;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (submitting) return; // prevent double submissions
-    submitting = true;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (submitting) return;
 
-    // Disable button and show feedback
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Submitting…";
-    }
+      const role = document.getElementById("role")?.value || "vendor";
+      if (role === "service" && !document.getElementById("selectedServices").value) {
+        swal("Error", "Please select a service before submitting.", "error");
+        return;
+      }
 
-    const formData = new FormData(form);
-    formData.append("selectedServices", document.getElementById('selectedServices')?.value || "");
+      submitting = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting…";
+      }
 
-    fetch(scriptURL, { method: "POST", body: formData })
-      .then(res => {
-        if (res.ok) {
-          swal("Success", "Form submitted successfully!", "success");
-          form.reset();
-          document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
-        } else {
-          swal("Error", "Submission failed. Try again.", "error");
-        }
-      })
-      .catch(() => swal("Error", "Network error. Please try again.", "error"))
-      .finally(() => {
-        submitting = false;
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Submit";
-        }
-      });
-  });
-}
+      const formData = new FormData(form);
+      formData.append("selectedServices", document.getElementById('selectedServices')?.value || "");
+
+      fetch(scriptURL, { method: "POST", body: formData })
+        .then(res => {
+          if (res.ok) {
+            swal("Success", "Form submitted successfully!", "success");
+            form.reset();
+            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+          } else {
+            swal("Error", "Submission failed. Try again.", "error");
+          }
+        })
+        .catch(() => swal("Error", "Network error. Please try again.", "error"))
+        .finally(() => {
+          submitting = false;
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit Registration";
+          }
+        });
+    });
+  }
 
 
   /* ===============================
@@ -1268,7 +1296,6 @@ function initFormSubmit() {
     let isDragging = false;
     let autoSlideInterval;
 
-    // Dots
     slides.forEach((_, i) => {
       const dot = document.createElement('button');
       dot.className = 'w-3 h-3 rounded-full bg-gray-400/50 hover:bg-emerald-600 transition';
@@ -1294,7 +1321,6 @@ function initFormSubmit() {
     nextCaret.addEventListener('click', () => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); resetAutoSlide(); });
     prevCaret.addEventListener('click', () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); resetAutoSlide(); });
 
-    // Swipe
     carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; carousel.style.transition = 'none'; clearInterval(autoSlideInterval); });
     carousel.addEventListener('touchmove', e => { if (!isDragging) return; const deltaX = e.touches[0].clientX - startX; const slideWidth = carousel.offsetWidth; currentTranslate = -currentIndex * slideWidth + deltaX; carousel.style.transform = `translateX(${currentTranslate}px)`; });
     carousel.addEventListener('touchend', e => { if (!isDragging) return; isDragging = false; const deltaX = e.changedTouches[0].clientX - startX; const threshold = 50; if (deltaX < -threshold) currentIndex = Math.min(currentIndex + 1, slides.length - 1); else if (deltaX > threshold) currentIndex = Math.max(currentIndex - 1, 0); updateCarousel(); resetAutoSlide(); });
@@ -1323,6 +1349,8 @@ function initFormSubmit() {
 
 });
 </script>
+
+
 
 
 
